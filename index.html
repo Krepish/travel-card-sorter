@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Маршрут путешественника</title>
+	<script src="travelCardsSorter.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1>Ваш маршрут:</h1>
+	<div id="rout"></div>
+
+	<script type="text/javascript">
+		var cards=[
+		{ 
+			"from": "Barcelona",
+			"to": "Gerona Airport",
+			"transport_type": "airport bus",
+			"transport_info": {
+				"route" : "122",
+				"seat" : "No seat assignment",
+        "notes": ""
+			}
+		},
+		{ 
+			"from": "Stockholm",
+			"to": "New York JFK",
+			"transport_type": "plane",
+			"transport_info": {
+        "flight": "SK22",
+        "gate": "22",
+        "seat": "7B",
+        "baggage_drop": "",
+        "notes": "Baggage will be automatically transferred from your last leg."
+			}
+		},
+		{ 
+			"from": "New York Amtrak",
+			"to": "Boston",
+			"transport_type": "train",
+			"transport_info": {
+				"route" : "18A",
+				"seat" : "45",
+				"notes": ""
+			}
+		},
+		{ 
+			"from": "Madrid",
+			"to": "Barcelona",
+			"transport_type": "train",
+			"transport_info": {
+				"route" : "78A",
+				"seat" : "85",
+				"notes": ""
+			}
+		},
+		{ 
+			"from": "Gerona Airport",
+			"to": "Stockholm",
+			"transport_type": "plane",
+			"transport_info": {
+				"flight": "SK455",
+        "gate": "45B",
+        "seat": "3A",
+        "baggage_drop": "344",
+        "notes": "Baggage drop at ticket counter 344."
+			}
+		},
+		{ 
+			"from": "New York JFK",
+			"to": "New York Amtrak",
+			"transport_type": "taxi",
+			"transport_info": {
+				"route" : "",
+				"seat" : "",
+				"notes": ""
+			}
+		}
+		];	
+
+		let sortedCards = new Cards();
+		sortedCards.sortCards(cards);
+		let description = sortedCards.travelDescription();
+			
+		if(description){
+			console.log(description);
+
+			let routElem = document.getElementById("rout");
+
+			for(let i=0; i<description.length; i++){
+				let rout = document.createElement('p');
+				rout.innerHTML = description[i];
+				routElem.appendChild(rout);
+			}
+		} 
+	</script>
+</body>
+</html>
