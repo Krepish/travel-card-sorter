@@ -1,41 +1,39 @@
 /*
-	Формат входных данных - массив объектов.
+Формат входных данных - массив объектов.
 
-	Структура карточки(объекта):
-	{ 
-		"from": название пункта отправления,
-		"to": название пункта прибытия,
-		"transport_type": "тип транспорта",
-		"info": { (дополнительная информация о транспорте)
-			"route" : "122",
-			"seat" : "No seat assignment",
-      "notes": "дополнительная информация"
-		}
+Структура карточки(объекта):
+{ 
+	"from": название пункта отправления,
+	"to": название пункта прибытия,
+	"transport_type": "тип транспорта",
+	"info": { (дополнительная информация о транспорте)
+		"route" : "122",
+		"seat" : "No seat assignment",
+    	"notes": "дополнительная информация"
 	}
+}
 */
 
 class Cards{
 	constructor(){
-		this.cards = []; 				//входные данные
+		this.cards = []; 		//входные данные
 		this.orderedCards = []; //сортированные данные
-		this.hashTable = {}; 		//вспомогательная хеш-таблица
-		this.description = []; 	//словесное описание путешествия в правильном порядке
-	}
+		this.hashTable = {}; 	//вспомогательная хеш-таблица
+		this.description = []; 	//словесное описание путешествия
 
 	/*Загрузка карточек*/
 	loadCards(){
-
 		//Проверка данных
 		if (cards instanceof Array) {
-    for (let i=0; i<cards.length; i++){
-      if (!cards[i].from || cards[i].from === '') {
-        console.error(`Пропущен пункт отправления в карточке ${i+1}: ${JSON.stringify(cards[i])}`);
-        return false;
-      } else if (!cards[i].to || cards[i].to === '') {
-        console.error(`Пропущен пункт прибытия в карточке ${i+1}: ${JSON.stringify(cards[i])}`);
-        return false;
-      }
-    };
+    		for (let i=0; i<cards.length; i++){
+      			if (!cards[i].from || cards[i].from === '') {
+        		console.error(`Пропущен пункт отправления в карточке ${i+1}: ${JSON.stringify(cards[i])}`);
+        		return false;
+      		} else if (!cards[i].to || cards[i].to === '') {
+        		console.error(`Пропущен пункт прибытия в карточке ${i+1}: ${JSON.stringify(cards[i])}`);
+        		return false;
+      		}
+    	};
 
 		this.cards = cards;
 	  } else {
